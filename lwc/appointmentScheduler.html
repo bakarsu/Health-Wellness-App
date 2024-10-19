@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Appointment Scheduler" icon-name="action:new_event">
+        <div class="slds-p-horizontal_small">
+            <lightning-input label="Select Appointment Date" type="date" value={newAppointmentDate} onchange={handleDateChange}></lightning-input>
+            <lightning-button label="Book Appointment" onclick={handleBookAppointment} class="slds-m-top_medium"></lightning-button>
+        </div>
+
+        <template if:true={appointments}>
+            <lightning-card title="Upcoming Appointments">
+                <ul>
+                    <template for:each={appointments} for:item="appt">
+                        <li key={appt.Id}>
+                            Appointment Date: {appt.Appointment_Date__c}
+                        </li>
+                    </template>
+                </ul>
+            </lightning-card>
+        </template>
+    </lightning-card>
+</template>
